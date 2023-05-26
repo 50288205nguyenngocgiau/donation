@@ -1,12 +1,10 @@
-# donation
-Project Use:
+# Donation
+* Project Use:
 Spring Boot.
 Spring Security.
 Thymeleaf.
-AngularJS.
 Bootstrap 5.
-Javascript.
 MySQL
-Here is Video Demo https://drive.google.com/drive/folders/1CW8dPDQ3LD9vvZXIZIPrP6JJHC7IatnS?usp=sharing
+* Here is Video Demo https://drive.google.com/file/d/18Wss3ryxzKF0qcUC5xoDNBhNoRJLWdcv/view?usp=share_link
 
-Here is database of project https://drive.google.com/drive/folders/1Tpa9MsyPeFqnJyeFf85a0bVrJIDqUVsv?
+* Here is database of project https://drive.google.com/file/d/1ahBPveAZKrEekEGmVN0MdU9xxMJtFbHe/view?usp=share_link
