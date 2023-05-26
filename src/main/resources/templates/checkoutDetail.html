@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"th:replace="index::layout(~{::#main})">
+<head>
+<meta charset="utf-8">
+<title>Checkout Detail</title>
+</head>
+<body>
+<div class="container-fluid" id="main">
+<div class="row p-5" >
+	<div class="text-center fs-5">Payment Done. Thank you for purchasing our product</div>
+	
+	<div class="card col-sm-4 offset-sm-4 mt-3">
+	<div class="card-body">
+		<table class="table ">
+  <thead>
+    <tr class="bg-color-light">
+      <th colspan="2" >Receipt detail</th>
+    </tr>
+  </thead>
+  <tbody>
+	  <tr>
+	      <th scope="row">PayerInfo</th>
+	      <td>
+	      <span th:text="${fullname}"></span>
+	      </td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Description</th>
+	      <td>
+	      <span th:text="${title}"></span>
+	      </td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Subtotal</th>
+	      <td>
+	      <span th:text="${#numbers.formatDecimal(donated, 0, 'COMMA', 0, 'POINT')}"></span> vnd
+	      </td>
+	    </tr>
+	    
+    <tr>
+      <th colspan="2" class="text-center">
+      <a href="/home/index" class="btn btn-primary">Home</a>
+      </th>
+    </tr>
+  </tbody>
+</table>
+	</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

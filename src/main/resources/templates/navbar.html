@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-5" xmlns:th="http://www.thymeleaf.org" th:fragment="navbar">
+  <div class="container-fluid">
+  	<img alt="" src="../img/vi.png">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="/home/index">Ví Nhân Ái</a>
+	        </li>
+        </ul>
+    
+      <div class="d-flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="#">Tin Tức Cộng Đồng</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="#">Đối Tác Đồng Hành</a>
+	        </li>
+	         <li class="nav-item" >
+			    <a class="nav-link active" th:if="${#request.remoteUser}" th:href="@{/admin/blog}">admin</a>
+			</li>
+	        <li class="nav-item" th:if="${#request.remoteUser}">
+	          <a class="nav-link active" aria-current="page" href="/detailDonor">Donations</a>
+	        </li>
+	        <li class="nav-item" th:if="${#request.remoteUser}">
+	          <a class="nav-link active" aria-current="page" href="/admin/donor">Donor</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="/security/login/form">Sign In</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="/security/logoff">Logout</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="/register">Register</a>
+	        </li>
+        </ul>
+      </div>
+    </div>
+</nav>

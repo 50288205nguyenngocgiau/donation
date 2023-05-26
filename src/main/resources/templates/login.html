@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"th:replace="index::layout(~{::section})">
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+</head>
+<body>
+<section>
+<div class="container">
+<div class="row m-5">
+<div class="card col-sm-4 offset-sm-4">
+<div class="card-body">
+
+<form th:action="@{/security/login}" method="post">
+<div class="mb-3">
+  <p class="text-center fs-4">Login</p>
+</div>
+<div th:if="${msg}" class="text-center text-danger">
+	<p th:text="${msg}" th:remove></p>
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input name="username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Password</label>
+  <input name="password" type="password" class="form-control" id="exampleFormControlInput2" placeholder="password">
+</div>
+<div class="form-group">
+	<div class="form-control">
+		<label class="checkbox-inline">
+			<input type="checkbox" class="remember-me" name="remember-me">Remember me?
+		</label>
+	</div>
+</div>
+<button class="btn btn-success offset-sm-4 col-sm-5 mt-3">Login</button>
+
+<div class="text-center">
+<a th:href="@{/oauth2/authorization/google}">Login with Google</a>
+</div>
+</form>
+
+</div>
+</div>
+</div>
+
+</div>
+
+</section>
+</body>
+</html>

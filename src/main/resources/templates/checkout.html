@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"th:replace="index::layout(~{::#main})">
+<head>
+<meta charset="utf-8">
+<title>Checkout</title>
+</head>
+<body>
+<div class="container-fluid" id="main">
+
+<div class="row">
+<div class="text-center fs-4 mt-3">
+Please Views Before Paying
+</div>
+
+<div class="card col-sm-4 offset-sm-4">
+<div class="card-body">
+<form action="/checkout" method="post">
+
+<table class="table">
+  <thead>
+    <tr class="bg-color-light">
+      <th colspan="2" >Transaction Details</th>
+    </tr>
+  </thead>
+  <tbody>
+	  <tr>
+	      <th scope="row">Title</th>
+	      <td>
+	      <input type="hidden" th:value="${id}" name="id" >
+	      <span th:text="${title}"></span>
+	      </td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Donated</th>
+	      <td>
+	      <span th:text="${#numbers.formatDecimal(donate, 0, 'COMMA', 0, 'POINT')}"></span> vnd
+	      <input type="hidden" name="donated" th:value="${donate}">
+	      </td>
+	    </tr>
+	    <tr class="bg-color-light">
+	      <th colspan="2">Payer Information</th>
+	    </tr>
+	    <tr>
+	      <th scope="row">First Name</th>
+	      <td>
+	      <span th:text="${firstName}"></span>
+	      </td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Last Name</th>
+	      <td>
+	      <span th:text="${lastName}"></span>
+	      </td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Email</th>
+	      <td>
+	      <span th:text="${email}"></span>
+	      </td>
+	    </tr>
+    <tr>
+      <th scope="row">Phone</th>
+      <td>
+      <span th:text="${phone}"></span>
+      </td>
+    </tr>
+    
+    <tr>
+      <th scope="row">Donation day</th>
+      <td>
+      <span th:text="${#dates.format(createDate, 'dd/MM/yyyy')}"></span>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2" class="text-center">
+      <button class="btn btn-primary">Checkout</button>
+      </th>
+    </tr>
+  </tbody>
+</table>
+</form>
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

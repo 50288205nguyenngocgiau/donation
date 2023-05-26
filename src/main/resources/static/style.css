@@ -1,0 +1,24 @@
+.footer{
+	background-color: rgb(38,38,38);
+	height:300px;
+}
+.border-button {
+  border: 1px solid red; /* Thay đổi màu sắc tùy thích */
+  padding: 10px 10px; /* Tùy chỉnh khoảng cách giữa văn bản và viền */
+  background-color: transparent; /* Đặt nền cho button là trong suốt */ 
+  cursor: pointer; /* Khi di chuột vào button sẽ có hình dạng mũi tên */
+border-radius: 5px;
+text-decoration: none;
+}
+.text-gray{
+	color: gray;
+}
+.text-pink{
+	color:pink;
+}
+.text-pink-dark{
+	color: #ff0080;
+}
+.bg-color-light{
+	background-color: rgb(231,231,231);
+}

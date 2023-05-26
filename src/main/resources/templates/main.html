@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"th:replace="index::layout(~{::section})" >
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+<section class="container">
+	<div class="text-center text-pink-dark fs-4 mb-4 mt-4">Các Hoàn Cảnh Quyên Góp</div>
+<div class="row">
+<div class="card col-sm-4 my-2" th:each="blog: ${list}"  >
+  <div class="card-body">
+  	<a th:href="@{|/blog/detail/${blog.id}|}">
+	  <img th:src="@{|/img/${blog.blogImage}|}" class="card-img-top"/>
+	</a>
+    <h5 class="card-title" th:text="${blog.title}"></h5>
+    <div class="row">
+    	<p class="col-md-6">user</p>
+    	<p class="col-md-6">
+    		Thời gian còn lại [[${blog.leftDate}]] ngày
+    	</p>
+    </div>
+    <b th:text="${#numbers.formatDecimal(blog.donated, 0, 'COMMA', 0, 'POINT')}"> 
+    </b> vnd/  <span th:text="${#numbers.formatDecimal(blog.goalDonate, 0, 'COMMA', 0, 'POINT')}"></span> vnd<br>
+    
+	<div class="progress mt-2" style="height: 10px">
+        <div class="progress-bar bg-danger" role="progressbar" aria-label="Basic example"
+             th:style="'width: '+${blog.percentDonate}+'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    
+    <div class="row mt-3">
+    	<div class="col-sm-4">
+    	Lượt quyên góp
+    	<p th:text="${blog.donateCount}"></p>
+    	</div>
+    	<div class="col-sm-4">
+    	Đạt được
+    	<p>[[${blog.percentDonate}]] %</p>
+    	</div>
+    	<div th:unless="${#request.remoteUser}" class="text-center col-sm-4">
+    	<div class="border-button">
+		  <a href="/security/login/form" class="text-center mt-3">Quyên góp</a>
+		 </div>
+		</div>
+		
+		<div th:if="${#request.remoteUser}" class="text-center col-sm-4 ">
+		  <!-- Button trigger modal -->
+		  <div class="border-button">
+			<a class=" text-center mt-3" th:href="@{|/blog/detail/${blog.id}|}">
+			  <i class="fa-brands fa-paypal"></i>
+			    	Quyên góp
+			</a>
+			</div>
+		</div>
+		
+		
+    </div>
+    
+  </div>
+</div>
+
+</div>
+
+<div class="row ">
+<div class="text-center text-pink-dark fs-4 mb-4">Ví Nhân Ái - Thiện nguyện mỗi ngày</div>
+<div class="col-sm-4 lh-lg ">
+<p class="fw-bold text-pink-dark">Quyên góp nhanh chóng, dễ dàng</p>
+Chỉ với vài chạm, bạn đã góp phần giúp đỡ 1 hoàn cảnh khó khăn có cuộc
+sống tốt đẹp hơn.
+</div>
+<div class="col-sm-4 row ">
+
+</div>
+<div class="col-sm-4 lh-lg ">
+<div class="fw-bold text-pink-dark">1000 đ cũng là đáng quý</div>
+Với mức ủng hộ tối thiểu 1.000 đồng, bạn đã cùng hàng triệu nhà hảo tâm khấc của 'Trái tim nhân ái' giúp đỡ những mảnh đời khó khăn.
+
+</div>
+<div class="col-sm-4 lh-lg ">
+<div class="fw-bold text-pink-dark text-pink-dark">Minh bạch, công khai mọi khoản đóng góp</div>
+Mọi thông tin về hoạt động đóng góp, tài trợ đều được công khai và cập nhật liên tục.
+
+</div>
+<div class="col-sm-4 text-center"><i class="fa-solid fa-hand-holding-heart text-pink-dark" style="font-size: 100px"></i></div>
+<div class="col-sm-4 lh-lg mb-3">
+<div class="fw-bold text-pink-dark">Đối tác của các cơ quan, tổ chức hảo tâm uy tín</div>
+'Trái tim nhân ái' đã và đang kết nối với rất nhiều đơn vị bảo trợ,báo chí, đơn vị hảo tâm uy tín trên cả nước.
+
+</div>
+
+</div>
+</section>
+</body>
+</html>

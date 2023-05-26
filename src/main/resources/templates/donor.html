@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"th:replace="index::layout(~{::#main})">
+<head>
+<meta charset="utf-8">
+<title>Donor</title>
+</head>
+<body>
+<div id="main" class="container">
+<div class="row">
+<div class="col-sm-12">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Fullname</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Donated</th>
+      <th scope="col">Blog</th>
+      <th scope="col">Create Date</th>
+      <th scope="col">Confirm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="donor, idex: ${lsDonor}">
+      <td th:text="${idex.index + 1}"></td>
+      <td th:text="${donor.fullName}">1</td>
+      <td th:text="${donor.account.email}"></td>
+      <td th:text="${donor.phone}"></td>
+      <td>
+      <span th:text="${#numbers.formatDecimal(donor.donated, 0, 'COMMA', 0, 'POINT')}"></span> vnd
+      </td>
+      <td th:text="${donor.blog.title}"></td>
+      <td th:text="${donor.createDate}"></td>
+      <td>
+      <a th:href="@{|/admin/donor/update/${donor.confirm}/${donor.id}}|">
+      <span class="btn btn-warning" th:if="${donor.confirm}==false">Đang xử lý</span>
+      <span class="btn btn-success" th:if="${donor.confirm}==true">Xác nhận</span>
+      </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"th:replace="index::layout(~{::#main})">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="main" class="container">
+
+<p >
+[[${msg}]]
+</p>
+
+<ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Blog Edit</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Blog List</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active row" id="home" role="tabpanel" aria-labelledby="home-tab">
+  
+  <form th:action="@{/}" method="post" th:object="${blogBinding}">
+
+<div class="row">
+  <div class="col-sm-6">
+<div class="mt-2">
+Title: <input type="text" th:field="*{title}" class="form-control">
+</div>
+
+<div class="mt-2">
+Content: <input type="text" th:field="*{content}" class="form-control">
+</div>
+
+<div class="mt-2">
+View Count: <input type="number" value="0" th:field="*{viewCount}" class="form-control" disabled>
+</div>
+
+<div class="mt-2">
+Donated: <input type="number" value="0" th:field="*{donated}" id="donated" class="form-control" disabled>
+</div>
+
+<div class="mt-2">
+Goal Donate: <input type="number" value="0" th:field="*{goalDonate}" class="form-control">
+</div>
+
+<div class="mt-2">
+Donate Count: <input type="number" value="0" th:field="*{donateCount}" class="form-control" disabled>
+</div>
+</div>
+
+  <div class="col-sm-6">
+
+<div class="mt-2">
+Start Date: <input type="text" th:field="*{startDate}" class="form-control">
+</div>
+
+<div class="mt-2">
+End Date: <input type="text" th:field="*{endDate}" class="form-control">
+</div>
+
+<div class="mt-2">
+Create Date: <input type="text" th:value="${#dates.format(#dates.createNow(), 'dd/MM/yyyy')}" th:field="*{createDate}" class="form-control" disabled/>
+</div>
+
+<div class="mt-2">
+Display: 
+<input type="radio" th:value="true" th:field="*{isDisplay}" >Yes
+<input type="radio" th:value="false" th:field="*{isDisplay}" >No
+</div>
+
+<div class="mt-2">
+Create By: <input type="text" th:field="*{createBy}" th:value="${username}" class="form-control" disabled>
+</div>
+<!-- <div class="mt-2">  -->
+<!--   Create By:  -->
+<!--   <input  -->
+<!--     type="text"  -->
+<!--     th:if="${not #fields.hasErrors('createBy')}"  -->
+<!--     th:value="${username}"  -->
+<!--     class="form-control"  -->
+<!--     disabled -->
+<!--   /> -->
+<!--   <input  -->
+<!--     type="text"  -->
+<!--     th:if="${#fields.hasErrors('createBy')}"  -->
+<!--     th:field="*{createBy}"  -->
+<!--     class="form-control"  -->
+<!--   />  -->
+<!-- </div> -->
+
+</div>
+
+<div class="col-sm-12">
+<div class="mt-2">
+Summary: <textarea th:field="*{summary}" class="form-control" id="content" rows="10"></textarea>
+</div>
+
+<input type="hidden" name="id" th:field="*{id}">
+<div class="text-center mt-2">
+<button class="btn btn-primary " th:formaction="@{/admin/blog/add}">Create</button>
+<button class="btn btn-primary " th:formaction="@{/admin/blog/update}">Update</button>
+</div>
+</div>
+
+</div>
+
+  </form>
+  <div class="my-4 border rounded-5">
+    <form th:object="${blogBinding}" th:method="post" enctype="multipart/form-data" th:action="@{|/admin/blog/edit/upload|}">
+        <input type="file" name="file" multiple>
+        <input type="submit" value="Upload">
+        <input type="hidden" name="id" th:field="*{id}">
+    </form>
+</div>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  
+  <div class="card">
+  <div class="card-body">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">View Count</th>
+      <th scope="col">Donated</th>
+      <th scope="col">Goal Donate</th>
+      <th scope="col">Donate Count</th>
+      <th scope="col">List Image</th>
+      <th scope="col">Is Display</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="blog, idex: ${lsBlog}">
+      <td th:text="${idex.index + 1}"></td>
+      <td th:text="${blog.title}"></td>
+      <td th:text="${blog.viewCount}"></td>
+      <td>
+      <span th:text="${#numbers.formatDecimal(blog.donated, 0, 'COMMA', 0, 'POINT')}"></span>  vnd
+      </td>
+      <td >
+      <span th:text="${#numbers.formatDecimal(blog.goalDonate, 0, 'COMMA', 0, 'POINT')}"></span>  vnd
+      </td>
+      <td th:text="${blog.donateCount}"></td>
+      <td>
+      <span th:each="image : ${imageList}" th:if="${blog.id} == ${image.blogId}" class="badge rounded-pill px-2 py-1 bg-warning my-1 mx-1 fw-bold text-white">
+           [[${image.name}]]
+       </span>
+      </td>
+      <td th:text="${blog.isDisplay}"></td>
+      <td>
+      <a class="btn btn-outline-primary" th:href="@{|/admin/blog/edit/${blog.id}|}">
+      <i class="fa-solid fa-pen-to-square"></i>
+      </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+  </div>
+  
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>

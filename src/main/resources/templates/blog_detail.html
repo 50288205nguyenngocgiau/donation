@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"th:replace="index::layout(~{::#main})">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container-fluid" id="main">
+<div class="row p-5" >
+<div class="col-sm-12">
+	<h1 class="h2" th:text="${item.title}"></h1>
+	<h5 class="my-4 text-muted" th:text="${item.content}"></h5>
+	<p class="my-4 text-muted">[[${item.createDate}]]</p>
+</div>
+
+<hr>
+<div class="row my-4">
+
+	<div class="col-sm-8">
+	<img th:each="image : ${imageList}" th:if="${image.blogId} == ${item.id}" th:src="@{|/img/${image.name}|}" class="d-block w-100 rounded-4 mt-2" th:alt="${image.name}">
+
+<!-- <div th:each="image : ${imageList}" th:if="${image.blogId} == ${item.id}" class="carousel-item"> -->
+<!--      <img th:src="@{|/img/${image.name}|}" class="d-block w-100 rounded-4" th:alt="${image.name}"> -->
+<!--  </div> -->
+	</div>
+	
+	
+	<div class="col-sm-4">
+		<div class="card" style="width: 30rem;">
+		  <div class="card-body">
+		    <h5 class="card-title">Thông tin quyên góp</h5>
+		    
+		    <b th:text="${#numbers.formatDecimal(item.donated, 0, 'COMMA', 0, 'POINT')}"> 
+    </b> vnd quyên góp/  <span th:text="${#numbers.formatDecimal(item.goalDonate, 0, 'COMMA', 0, 'POINT')}"></span> vnd<br>
+    
+    <div class="progress mt-3" style="height: 10px">
+        <div class="progress-bar bg-danger" role="progressbar" aria-label="Basic example"
+             th:style="'width: '+${percentFinish}+'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+        </div>
+        
+    	</div>
+    	
+    <div class="row fw-bold text-gray mt-3">
+        	<div class="col-sm-4">
+        	Lượt quyên góp [[${item.donateCount}]]
+        	</div>
+        	<div class="col-sm-4">
+        	Đạt được [[${percentFinish}]]%
+        	</div>
+        	<div class="col-sm-4">
+        	Thời hạn còn [[${daysBetween}]]
+        	</div>
+	    	
+<div th:unless="${#request.remoteUser}" class="text-center">
+  <a href="/security/login/form" class="border-button text-center col-sm-12 offset-sm-12 mt-3">Quyên góp</a>
+</div>
+
+<div th:if="${#request.remoteUser}" class="text-center">
+  <!-- Button trigger modal -->
+	<a class="border-button text-center col-sm-12 offset-sm-12 mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	  <i class="fa-brands fa-paypal"></i>
+	    	Quyên góp
+	</a>
+</div>
+	<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+        Quyên góp cho [[${item.title}]]
+        </h5>
+      </div>
+      <div class="modal-body">
+      <form action="/checkout" method="get">
+        Số tiền quyên góp (USD) <br>
+        <input type="number" name="donated" class="form-control mt-2" id="exampleFormControlInput1" min="1000" required>
+        <p id="donate-error"></p>
+        <input type="hidden" name="id" th:value="${item.id}" class="form-control mt-2" id="exampleFormControlInput1" >
+        <input type="hidden" name="title" th:value="${item.title}" class="form-control mt-2" id="exampleFormControlInput1" >
+        
+        
+        <div class="modal-footer">
+        <button class="btn btn-primary">
+        Check Out
+        </button>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+		
+       </div>
+		  </div>
+		</div>
+	</div>
+	
+	<h4 class="h4 mt-4">Câu Chuyện</h4>
+
+
+	<p th:text="${item.summary}"></p>
+	
+	<div class="col-sm-4">
+	
+	</div>
+</div>
+
+<div class="col-sm-12">
+<div class="card col-sm-5 offset-sm-3" >
+<div class="card-body">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="2" class="fs-4">Nhà Hảo Tâm</th>
+    </tr>
+  </thead>
+  <tbody>
+	  <tr th:each="ls: ${blogList}">
+      <th th:text="${ls.fullName}"></th>
+      <td>
+      <p class="p-2">[[${#numbers.formatDecimal(ls.donated, 0, 'COMMA', 1, 'POINT')}]] <i>VND</i></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+	
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

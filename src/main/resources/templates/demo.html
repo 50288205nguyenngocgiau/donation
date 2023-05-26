@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Demo</title>
+</head>
+<body>
+<h3 th:unless="${#request.remoteUser}">Chưa đăng nhập</h3>
+	<th:block th:if="${#request.remoteUser}">
+		<h3>Authentication information</h3>
+		<ul>
+		<li>username: [[${#request.remoteUser}]]</li>
+		<li>is admin: [[${#request.isUserInRole('ADMIN')}]]</li>
+		</ul>
+	</th:block>
+	<p th:object="${#request.userPrincipal}">
+	username: [[*{name}]] <br>
+	roles: [[*{authorities}]]
+	</p>
+demo
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="index::layout(~{::#main})">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="main" class="container-fluid">
+<div class="row">
+
+	<div class="card col-sm-4 mb-3 offset-sm-1 mt-3" th:each="ls: ${donorLs}">
+	<div class="card-body">
+	
+	<table class="table">
+		<tr>
+		</tr>
+		<tr >
+			<th>Fullname</th>
+			<td th:text="${ls.fullName}"></td>
+		</tr>
+		
+		<tr>
+			<th>Email</th>
+			<td th:text="${ls.account.email}"></td>
+		</tr>
+		
+		<tr>
+			<th>Phone</th>
+			<td th:text="${ls.phone}"></td>
+		</tr>
+		
+		<tr>
+			<th>Donated</th>
+			<td>
+			<span th:text="${#numbers.formatDecimal(ls.donated, 0, 'COMMA', 0, 'POINT')}"></span> vnd
+			</td>
+		</tr>
+		
+		<tr>
+			<th>Donate To</th>
+			<td th:text="${ls.blog.title}"></td>
+		</tr>
+		
+		<tr>
+			<th>Create Date</th>
+			<td th:text="${ls.createDate}"></td>
+		</tr>
+	</table>
+		
+	</div>
+	</div>
+</div>
+</div>
+
+</body>
+</html>
