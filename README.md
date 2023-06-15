@@ -1,4 +1,4 @@
-<img width="466" alt="image" src="https://github.com/50288205nguyenngocgiau/donation/assets/94311488/2af7b220-ee5b-4a38-b0cb-f0862b7540bf"># Donation
+# Donation
 * Project Use:
 Spring Boot.
 Spring Security.
