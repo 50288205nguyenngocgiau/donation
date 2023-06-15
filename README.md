@@ -20,6 +20,7 @@ MySQL
   <img width="922" alt="image" src="https://github.com/50288205nguyenngocgiau/donation/assets/94311488/f25e6356-30cd-4661-9271-c7ca2491066f">
 <img width="919" alt="image" src="https://github.com/50288205nguyenngocgiau/donation/assets/94311488/a454c20c-3105-46ec-a09d-d3c68ea03529">
 - Donate Button
-  <img width="926" alt="image" src="https://github.com/50288205nguyenngocgiau/donation/assets/94311488/7151d0a1-8e7e-4a12-9f7f-fe7c4a305fa7">
+  <img width="926" alt="donate" src="https://github.com/50288205nguyenngocgiau/donation/assets/94311488/cc9c9e9c-d63c-42f1-a4e5-a0a14ebc06c5">
+
 
 
