@@ -37,5 +37,7 @@ MySQL
 
 -  Managerment
 
-<img width="506" alt="image" src="https://github.com/50288205nguyenngocgiau/donation/assets/94311488/74e2445b-d822-490c-8d92-24d4097a2601">
+<img width="665" alt="image" src="https://github.com/50288205nguyenngocgiau/donation/assets/94311488/b46a3ab4-462e-4574-9f38-1327ae1c3ce7">
+<img width="662" alt="image" src="https://github.com/50288205nguyenngocgiau/donation/assets/94311488/ab9f7006-eaff-4f47-8230-f7b3042ddeeb">
+<img width="656" alt="image" src="https://github.com/50288205nguyenngocgiau/donation/assets/94311488/7c25e4a3-48c8-4c64-a2c4-b743750e22e5">
 
