@@ -35,5 +35,7 @@ MySQL
 <img width="356" alt="donate" src="https://github.com/50288205nguyenngocgiau/donation/assets/94311488/42c1bb58-48fa-4208-ac4e-5b244d701f57">
 <img width="317" alt="image" src="https://github.com/50288205nguyenngocgiau/donation/assets/94311488/98c982cb-61d8-43bf-b509-172c0c0ec7ef">
 
+-  Managerment
 
+<img width="506" alt="image" src="https://github.com/50288205nguyenngocgiau/donation/assets/94311488/74e2445b-d822-490c-8d92-24d4097a2601">
 
